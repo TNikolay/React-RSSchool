@@ -1,22 +1,30 @@
 header {
-    background-color: black;
-    padding: 2rem 0;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  header > a {
-    color: green;
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 0 2rem;
-  }
-  header > a:hover {
-    text-decoration: underline;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-top: 0;
-  }
-  
+  background-color: black;
+  padding: 2rem 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+header > a {
+  color: green;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0 2rem;
+}
+
+header > a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding-top: 4rem;
+  width: 90%;
+  height: 100%;
+}
