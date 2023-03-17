@@ -1,9 +1,14 @@
 import React from 'react';
+import SearchBar from '../components/searchbar/searchbar';
 
 class HomePage extends React.Component {
   render() {
     console.log('Home page');
-    return <h1>Home page</h1>;
+    return (
+      <>
+        <SearchBar />
+      </>
+    );
   }
 }
 
