@@ -1,0 +1,30 @@
+.container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 30px;
+}
+
+.username {
+  text-align: center;
+}
+
+.img {
+  min-height: 400px;
+  width: 100%;
+}
+
+.inner {
+  padding: 10px 30px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.from {
+    font-weight:normal;
+    font-size: smaller;
+}
