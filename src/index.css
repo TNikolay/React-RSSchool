@@ -28,3 +28,11 @@ h1 {
   width: 90%;
   height: 100%;
 }
+
+.active-link {
+  color: #fff;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}

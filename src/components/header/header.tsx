@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
+const setActiveLink = ({ isActive }) => {
+  return isActive ? 'active-link' : '';
+};
+
+const setVisibilityHidden = ({ isActive }) => {
+  return isActive ? 'visibility-hidden' : '';
+};
 
 export class Header extends Component {
   render() {
     return (
       <header>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/sdfdsv">Surprise me!</Link>
+        <NavLink to="/" className={setActiveLink}>
+          Home
+        </NavLink>
+        <NavLink to="/about" className={setActiveLink}>
+          About
+        </NavLink>
+        <NavLink to="/sdfdsv" className={setVisibilityHidden}>Surprise me!</NavLink>
       </header>
     );
   }
