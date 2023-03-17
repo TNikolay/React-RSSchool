@@ -1,0 +1,13 @@
+.container {
+  background-color: #000;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}

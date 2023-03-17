@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 export class Layout extends Component {
   render() {
@@ -10,6 +11,7 @@ export class Layout extends Component {
         <main className="container">
           <Outlet />
         </main>
+        <Footer />
       </>
     );
   }
