@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './header.module.css';
 
-const setActiveLink = ({ isActive }) => {
+const setActiveLink = ({ isActive }: { isActive: boolean }) => {
   return isActive ? 'active-link' : '';
 };
 
-const setVisibilityHidden = ({ isActive }) => {
+const setVisibilityHidden = ({ isActive }: { isActive: boolean }) => {
   return isActive ? 'visibility-hidden' : '';
 };
 
