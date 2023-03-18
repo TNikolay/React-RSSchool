@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IUserList, IUser } from '../../users';
+import { IUserList } from '../../users';
 import { Card } from '../card/card';
 import style from './cardlist.module.css';
 

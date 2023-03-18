@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const setActiveLink = ({ isActive }) => {
   return isActive ? 'active-link' : '';
@@ -19,7 +19,9 @@ export class Header extends Component {
         <NavLink to="/about" className={setActiveLink}>
           About
         </NavLink>
-        <NavLink to="/sdfdsv" className={setVisibilityHidden}>Surprise me!</NavLink>
+        <NavLink to="/sdfdsv" className={setVisibilityHidden}>
+          Surprise me!
+        </NavLink>
       </header>
     );
   }
