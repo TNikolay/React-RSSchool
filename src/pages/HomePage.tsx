@@ -5,7 +5,6 @@ import { userListData } from '../users';
 
 class HomePage extends React.Component {
   render() {
-    console.log('Home page');
     return (
       <>
         <SearchBar />

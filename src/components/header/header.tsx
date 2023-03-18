@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import style from './header.module.css';
 
 const setActiveLink = ({ isActive }) => {
   return isActive ? 'active-link' : '';
@@ -12,7 +13,7 @@ const setVisibilityHidden = ({ isActive }) => {
 export class Header extends Component {
   render() {
     return (
-      <header>
+      <header className={style.header}>
         <NavLink to="/" className={setActiveLink}>
           Home
         </NavLink>

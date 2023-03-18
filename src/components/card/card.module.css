@@ -1,5 +1,5 @@
 .container {
-  width: 400px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   background-color: whitesmoke;
@@ -11,7 +11,7 @@
 }
 
 .img {
-  min-height: 400px;
+  min-height: 450px;
   width: 100%;
 }
 
@@ -27,4 +27,8 @@
 .from {
     font-weight:normal;
     font-size: smaller;
+}
+
+.list {
+  line-height: 24px;
 }

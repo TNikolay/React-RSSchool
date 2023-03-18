@@ -15,14 +15,18 @@ export class Card extends Component<CardProps> {
     return (
       <div className={style.container}>
         <h3 className={style.username}>{this.props.user.username}</h3>
-        <img className={style.img} src={`/public/user-images/${this.props.user.id}.png`}></img>
+        <img
+          className={style.img}
+          src={`/user-images/${this.props.user.id}.png`}
+          alt={this.props.user.username}
+        ></img>
 
         <div className={style.inner}>
           <p className={style.name}>
             {this.props.user.name} <span className={style.from}>from</span> {this.props.user.city}
           </p>
           <p>Contacts:</p>
-          <ul>
+          <ul className={style.list}>
             <li>
               E-mail: <a href={`mailto:${this.props.user.email}`}>{this.props.user.email}</a>
             </li>

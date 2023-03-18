@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './searchbar.css';
+import style from './searchbar.module.css';
 
 interface IState {
   query: string;
@@ -33,16 +33,14 @@ export class SearchBar extends Component<object, IState> {
 
   render() {
     return (
-      <div className="search-container">
-        <div>
-          <input
-            type="text"
-            placeholder="Search here"
-            value={this.state.query}
-            onChange={this.onQueryChange}
-          />
-          <button className="button">Search</button>
-        </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Search here"
+          value={this.state.query}
+          onChange={this.onQueryChange}
+        />
+        <button className={style.button}>Search</button>
       </div>
     );
   }
