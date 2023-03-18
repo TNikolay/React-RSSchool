@@ -1,12 +1,46 @@
 import React, { Component } from 'react';
 import './searchbar.css';
 
-export class SearchBar extends Component {
+interface IState {
+  query: string;
+}
+
+export class SearchBar extends Component<object, IState> {
+  constructor(props: object) {
+    super(props);
+    const st: IState = {
+      query: '',
+    };
+
+    this.state = st;
+  }
+
+  componentDidMount() {
+    this.setState({
+      query: localStorage.getItem('search_query') ?? '',
+    });
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('search_query', this.state.query);
+  }
+
+  onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      query: event.target.value,
+    });
+  };
+
   render() {
     return (
       <div className="search-container">
         <div>
-          <input type="text" placeholder="Search here" />
+          <input
+            type="text"
+            placeholder="Search here"
+            value={this.state.query}
+            onChange={this.onQueryChange}
+          />
           <button className="button">Search</button>
         </div>
       </div>
