@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import AboutPage from './AboutPage';
 
 describe('About page', () => {
-  it('it renders', async () => {
+  it('it renders', () => {
     render(<AboutPage />);
 
     expect(
