@@ -1,0 +1,7 @@
+.gitignore
+.prettierignore
+package-lock.json
+dist
+coverage
+.vscode
+README.md
