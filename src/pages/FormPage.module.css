@@ -1,0 +1,8 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 50px;
+  }
+  
