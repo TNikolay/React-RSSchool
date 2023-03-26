@@ -8,11 +8,11 @@ import style from './FormPage.module.css';
 
 export interface IUser2 {
   id: number;
-  username: string | undefined;
-  birthday: string | undefined;
-  location: string | undefined;
-  gender: string | undefined;
-  avatar: string | undefined; //FileList;
+  username?: string;
+  birthday?: string;
+  location?: string;
+  gender?: string;
+  avatar?: string;
 }
 
 export type IUser2List = IUser2[];

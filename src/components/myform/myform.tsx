@@ -1,4 +1,4 @@
-import React, { LegacyRef } from 'react';
+import React from 'react';
 import style from './myform.module.css';
 import { IUser2 } from '../../pages/FormPage';
 
@@ -20,7 +20,7 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
   private id = 0;
   private input: React.RefObject<HTMLInputElement> = React.createRef();
   private date: React.RefObject<HTMLInputElement> = React.createRef();
-  private location: LegacyRef<HTMLSelectElement> = React.createRef();
+  private location: React.RefObject<HTMLSelectElement> = React.createRef();
   private genderM: React.RefObject<HTMLInputElement> = React.createRef();
   private genderF: React.RefObject<HTMLInputElement> = React.createRef();
   private avatar: React.RefObject<HTMLInputElement> = React.createRef();
@@ -37,7 +37,7 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
       gender == '' ||
       this.input.current?.value.trim() == '' ||
       this.date.current?.value == '' ||
-      this.location.current.value == '1' ||
+      this.location.current?.value == '1' ||
       this.avatar.current?.files?.length == 0
     ) {
       this.setState({ isError: true });
@@ -47,19 +47,19 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
     this.id++;
     this.props.onSubmit({
       id: this.id,
-      username: this.input.current.value.trim(),
+      username: this.input.current?.value.trim(),
       birthday: this.date.current?.value,
       location: this.location.current?.value,
       gender: gender,
-      avatar: this.avatar?.current?.files[0]?.name,
+      avatar: this.avatar.current?.files?.item(0)?.name,
     });
     this.setState({ isError: false });
     this.form.current?.reset();
   };
 
   getGender = () => {
-    const Male = this.genderM.current.checked;
-    const Female = this.genderF.current.checked;
+    const Male = this.genderM.current?.checked;
+    const Female = this.genderF.current?.checked;
     if (Male && !Female) return 'Male';
     else if (Female && !Male) return 'Female';
     return '';
@@ -87,7 +87,7 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
           <br />
 
           <label
-            className={this.state.isError && this.location.current.value == '1' ? style.red : ''}
+            className={this.state.isError && this.location.current?.value == '1' ? style.red : ''}
           >
             <h4>Location:</h4>
             <select name="location" defaultValue="1" ref={this.location}>
@@ -108,7 +108,7 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
 
           <h4
             className={
-              this.state.isError && !this.genderM.current.checked && !this.genderF.current.checked
+              this.state.isError && !this.genderM.current?.checked && !this.genderF.current?.checked
                 ? style.red
                 : ''
             }
