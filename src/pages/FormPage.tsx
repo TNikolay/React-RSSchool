@@ -6,13 +6,14 @@ import style from './FormPage.module.css';
 
 export interface IUser2 {
   id: number;
-  username: string;
+  username: string | undefined;
+  birthday: string | undefined;
+  location: string | undefined;
+  gender: string | undefined;
+  avatar: string | undefined; //FileList;
 }
 
 export type IUser2List = IUser2[];
-
-// type MyComponentProps = {
-// }
 
 type MyFormPageState = {
   list: IUser2List;
@@ -23,14 +24,13 @@ class FormPage extends React.Component<object, MyFormPageState> {
     super(props);
 
     const st: MyFormPageState = {
-      //list: [{username: 'dd'}, {username: 'dd222222222'},],
       list: [],
     };
 
     this.state = st;
   }
 
-  addCard = (data: IFormData) => {
+  addCard = (data: IUser2) => {
     console.log('AddCard ', data);
     this.setState((state) => ({
       list: [...state.list, data],
@@ -40,7 +40,7 @@ class FormPage extends React.Component<object, MyFormPageState> {
   render() {
     return (
       <>
-        <h1>This is FORM</h1>
+        <h1>This is Form</h1>
         <MyForm onSubmit={this.addCard} />
 
         <div className={style.container}>

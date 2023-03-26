@@ -10,25 +10,6 @@
   text-align: center;
 }
 
-.img {
-  min-height: 450px;
-  width: 100%;
-}
-
-.inner {
-  padding: 10px 30px;
-}
-
-.name {
-  font-weight: bold;
-  font-size: larger;
-}
-
-.from {
-  font-weight: normal;
-  font-size: smaller;
-}
-
 .list {
   line-height: 24px;
 }

@@ -14,32 +14,27 @@ export class CardUser extends Component<CardProps> {
   render() {
     return (
       <div className={style.container}>
-        <h3 className={style.username}>
-          {this.props.user.id}: {this.props.user.username}
-        </h3>
-        {/* <img
-          className={style.img}
-          src={`/user-images/${this.props.user.id}.png`}
-          alt={this.props.user.username}
-        ></img>
-
-        <div className={style.inner}>
-          <p className={style.name}>
-            {this.props.user.name} <span className={style.from}>from</span> {this.props.user.city}
-          </p>
-          <p>Contacts:</p>
-          <ul className={style.list}>
-            <li>
-              E-mail: <a href={`mailto:${this.props.user.email}`}>{this.props.user.email}</a>
-            </li>
-            <li>
-              Website:{' '}
-              <a href={`http://${this.props.user.website}`} target="_blank" rel="noreferrer">
-                {this.props.user.website}
-              </a>
-            </li>
-          </ul>
-        </div> */}
+        <h3 className={style.username}>{this.props.user.username}</h3>
+        <ul className={style.list}>
+          <li>
+            id : <strong>{this.props.user.id}</strong>
+          </li>
+          <li>
+            Name : <strong>{this.props.user.username}</strong>
+          </li>
+          <li>
+            Location : <strong>{this.props.user.location}</strong>
+          </li>
+          <li>
+            Birthday : <strong>{this.props.user.birthday}</strong>
+          </li>
+          <li>
+            Gender : <strong>{this.props.user.gender}</strong>
+          </li>
+          <li>
+            Avatar : <strong>{this.props.user.avatar}</strong>
+          </li>
+        </ul>
       </div>
     );
   }
