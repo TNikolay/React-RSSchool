@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import CardUser from '../components/carduser/carduser';
@@ -33,7 +33,6 @@ class FormPage extends React.Component<object, MyFormPageState> {
   }
 
   addCard = (data: IUser2) => {
-    console.log('AddCard ', data);
     this.setState((state) => ({
       list: [...state.list, data],
     }));

@@ -20,17 +20,18 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
   private id = 0;
   private input: React.RefObject<HTMLInputElement> = React.createRef();
   private date: React.RefObject<HTMLInputElement> = React.createRef();
-  private location: LegacyRef<HTMLSelectElement> = React.createRef(); // React.RefObject<HTMLInputElement> = React.createRef();
+  private location: LegacyRef<HTMLSelectElement> = React.createRef();
   private genderM: React.RefObject<HTMLInputElement> = React.createRef();
   private genderF: React.RefObject<HTMLInputElement> = React.createRef();
   private avatar: React.RefObject<HTMLInputElement> = React.createRef();
   private agree: React.RefObject<HTMLInputElement> = React.createRef();
+  private form: React.RefObject<HTMLFormElement> = React.createRef();
 
-  handleSubmit: React.FormEventHandler<HTMLFormElement /*& FormFields*/> = (event) => {
+  handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
     const gender = this.getGender();
-    //console.log(this.avatar.current?.files?.length == 0);
+
     if (
       !this.agree.current?.checked ||
       gender == '' ||
@@ -53,6 +54,7 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
       avatar: this.avatar?.current?.files[0]?.name,
     });
     this.setState({ isError: false });
+    this.form.current?.reset();
   };
 
   getGender = () => {
@@ -67,19 +69,19 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
     return (
       <>
         {this.state.isError ? <h2 className={style.red}>Error</h2> : ''}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} ref={this.form}>
           <label
             className={
               this.state.isError && this.input.current?.value.trim() == '' ? style.red : ''
             }
           >
-            User Name:
+            <h4>User Name:</h4>
             <input type="text" name="username" ref={this.input} />
           </label>
           <br />
 
           <label className={this.state.isError && this.date.current?.value == '' ? style.red : ''}>
-            Birthday:
+            <h4>Birthday:</h4>
             <input type="date" name="birthday" ref={this.date} />
           </label>
           <br />
@@ -87,7 +89,7 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
           <label
             className={this.state.isError && this.location.current.value == '1' ? style.red : ''}
           >
-            Location:
+            <h4>Location:</h4>
             <select name="location" defaultValue="1" ref={this.location}>
               <option disabled value="1">
                 Choose one
@@ -115,12 +117,11 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
           </h4>
           <label>
             <input type="radio" name="gender" value="Male" ref={this.genderM} />
-            Male
+            <span className={style.pr}>Male</span>
           </label>
-          <br />
           <label>
             <input type="radio" name="gender" value="Female" ref={this.genderF} />
-            Female
+            <span className={style.pr}>Female</span>
           </label>
           <br />
 
@@ -139,11 +140,14 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
           <h4>Terms:</h4>
           <div>
             <label className={this.state.isError && !this.agree.current?.checked ? style.red : ''}>
-              <input type="checkbox" name="agree" ref={this.agree} />I am up for anything
+              <input type="checkbox" name="agree" ref={this.agree} />
+              <span className={style.pr}>I am up for anything</span>
             </label>
           </div>
 
-          <button type="submit">Submit</button>
+          <button type="submit" className={style.submit}>
+            Submit
+          </button>
         </form>
       </>
     );

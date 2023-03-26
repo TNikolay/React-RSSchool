@@ -5,3 +5,11 @@
 .red {
   color: red;
 }
+
+.pr {
+  padding: 0 20px 0 10px;
+}
+
+.submit {
+  margin: 20px 0 0 200px;
+}
