@@ -69,26 +69,31 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
     return (
       <>
         {this.state.isError ? <h2 className={style.red}>Error</h2> : ''}
+
         <form onSubmit={this.handleSubmit} ref={this.form}>
-          <label
-            className={
-              this.state.isError && this.input.current?.value.trim() == '' ? style.red : ''
-            }
-          >
+          <label>
             <h4>User Name:</h4>
             <input type="text" name="username" ref={this.input} />
           </label>
+          {this.state.isError && this.input.current?.value.trim() == '' ? (
+            <div className={style.red}>Name is required</div>
+          ) : (
+            ''
+          )}
           <br />
 
-          <label className={this.state.isError && this.date.current?.value == '' ? style.red : ''}>
+          <label>
             <h4>Birthday:</h4>
             <input type="date" name="birthday" ref={this.date} />
           </label>
+          {this.state.isError && this.date.current?.value == '' ? (
+            <div className={style.red}>Date is required</div>
+          ) : (
+            ''
+          )}
           <br />
 
-          <label
-            className={this.state.isError && this.location.current?.value == '1' ? style.red : ''}
-          >
+          <label>
             <h4>Location:</h4>
             <select name="location" defaultValue="1" ref={this.location}>
               <option disabled value="1">
@@ -104,17 +109,14 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
               <option value="Neptune">Neptune</option>
             </select>
           </label>
+          {this.state.isError && this.location.current?.value == '1' ? (
+            <div className={style.red}>Select location</div>
+          ) : (
+            ''
+          )}
           <br />
 
-          <h4
-            className={
-              this.state.isError && !this.genderM.current?.checked && !this.genderF.current?.checked
-                ? style.red
-                : ''
-            }
-          >
-            Gender:
-          </h4>
+          <h4>Gender:</h4>
           <label>
             <input type="radio" name="gender" value="Male" ref={this.genderM} />
             <span className={style.pr}>Male</span>
@@ -123,27 +125,37 @@ class MyForm extends React.Component<IFormProps, MyFormState> {
             <input type="radio" name="gender" value="Female" ref={this.genderF} />
             <span className={style.pr}>Female</span>
           </label>
+          {this.state.isError &&
+          !this.genderM.current?.checked &&
+          !this.genderF.current?.checked ? (
+            <div className={style.red}>Select gender</div>
+          ) : (
+            ''
+          )}
           <br />
 
-          <h4
-            className={
-              this.state.isError && this.avatar.current?.files?.length == 0 ? style.red : ''
-            }
-          >
-            Avatar:
-          </h4>
+          <h4>Avatar:</h4>
           <label>
             <input type="file" name="image" accept="image/*" ref={this.avatar} />
           </label>
+          {this.state.isError && this.avatar.current?.files?.length == 0 ? (
+            <div className={style.red}>Show me your face!</div>
+          ) : (
+            ''
+          )}
           <br />
 
           <h4>Terms:</h4>
-          <div>
-            <label className={this.state.isError && !this.agree.current?.checked ? style.red : ''}>
-              <input type="checkbox" name="agree" ref={this.agree} />
-              <span className={style.pr}>I am up for anything</span>
-            </label>
-          </div>
+          <label>
+            <input type="checkbox" name="agree" ref={this.agree} />
+            <span className={style.pr}>I am up for anything</span>
+          </label>
+          {this.state.isError && !this.agree.current?.checked ? (
+            <div className={style.red}>You should obey...</div>
+          ) : (
+            ''
+          )}
+          <br />
 
           <button type="submit" className={style.submit}>
             Submit
