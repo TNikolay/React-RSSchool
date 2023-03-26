@@ -1,0 +1,15 @@
+.container {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 30px;
+}
+
+.username {
+  text-align: center;
+}
+
+.list {
+  line-height: 24px;
+}

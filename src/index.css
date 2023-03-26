@@ -1,0 +1,24 @@
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+header > a {
+  color: green;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0 2rem;
+}
+
+header > a:hover {
+  text-decoration: underline;
+}
+
+header > .active-link {
+  color: #fff;
+}
