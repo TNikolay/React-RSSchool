@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import CardUser from '../components/carduser/carduser';
 import MyForm from '../components/myform/myform';
@@ -35,6 +37,7 @@ class FormPage extends React.Component<object, MyFormPageState> {
     this.setState((state) => ({
       list: [...state.list, data],
     }));
+    toast.success(`Card with id = ${data.id} successfully added`);
   };
 
   render() {
@@ -48,6 +51,7 @@ class FormPage extends React.Component<object, MyFormPageState> {
             <CardUser user={v} key={v.id} />
           ))}
         </div>
+        <ToastContainer position="top-center" />
       </>
     );
   }
