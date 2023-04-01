@@ -1,49 +1,28 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import style from './searchbar.module.css';
 
-interface IState {
-  query: string;
-}
+export default function Searchbar() {
+  const [query, setQuery] = useState('');
+  const queryRef = useRef('');
 
-export class SearchBar extends Component<object, IState> {
-  constructor(props: object) {
-    super(props);
-    const st: IState = {
-      query: '',
-    };
-
-    this.state = st;
-  }
-
-  componentDidMount() {
-    this.setState({
-      query: localStorage.getItem('search_query') ?? '',
-    });
-  }
-
-  componentWillUnmount() {
-    localStorage.setItem('search_query', this.state.query);
-  }
-
-  onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      query: event.target.value,
-    });
+  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    queryRef.current = event.target.value;
+    setQuery(event.target.value);
   };
 
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          placeholder="Search here"
-          value={this.state.query}
-          onChange={this.onQueryChange}
-        />
-        <button className={style.button}>Search</button>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    setQuery(localStorage.getItem('search_query') ?? '');
+    queryRef.current = localStorage.getItem('search_query') ?? ''; // fix for <React.StrictMode>
 
-export default SearchBar;
+    return () => {
+      localStorage.setItem('search_query', queryRef.current);
+    };
+  }, []);
+
+  return (
+    <div>
+      <input type="text" placeholder="Search here" value={query} onChange={onQueryChange} />
+      <button className={style.button}>Search</button>
+    </div>
+  );
+}
