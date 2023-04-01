@@ -13,17 +13,29 @@ interface IFormProps {
 
 interface IFormField extends IUser2 {
   agree: boolean;
+  avatar_form: FileList;
 }
 
 export default function MyForm({ onSubmit }: IFormProps): ReactElement {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IFormField>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
   const onSubmitLocal: SubmitHandler<IFormField> = (data) => {
-    console.log(data);
+    console.log('onSubmitLocal', data);
+    const nd: IUser2 = {
+      id: -1,
+      username: data.username,
+      birthday: data.birthday,
+      location: data.location,
+      gender: data.gender,
+      avatar: data.avatar_form[0].name,
+    };
+    onSubmit(nd);
+    reset();
   };
 
   return (
@@ -79,11 +91,11 @@ export default function MyForm({ onSubmit }: IFormProps): ReactElement {
 
       <h4>Avatar:</h4>
       <input
-        {...register('avatar', { required: 'Show me your face' })}
+        {...register('avatar_form', { required: 'Show me your face' })}
         type="file"
         accept="image/*"
       />
-      <ErrorPlaceholder text={errors.avatar?.message} />
+      <ErrorPlaceholder text={errors.avatar_form?.message} />
 
       <h4>Terms:</h4>
       <input {...register('agree', { required: 'You should obey...' })} type="checkbox" />
