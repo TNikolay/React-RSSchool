@@ -9,23 +9,11 @@ h1 {
   visibility: hidden;
 }
 
-header > a {
-  color: green;
-  font-size: 2rem;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 0 2rem;
-}
-
-header > a:hover {
-  text-decoration: underline;
-}
-
-header > .active-link {
-  color: #fff;
-}
-
 body{
   font-size: 14px;
   font-family: Roboto, Verdana, sans-serif;
+}
+
+.active-link {
+  color: #fff;
 }

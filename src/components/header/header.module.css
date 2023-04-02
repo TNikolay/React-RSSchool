@@ -1,5 +1,29 @@
-header {
+.header {
   background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: baseline;
+}
+
+.header > span {
+  color: blanchedalmond;
+  font-size: 2rem;
+  padding-left: 50px;
+}
+
+nav {
   padding: 2rem 0;
   text-align: center;
+}
+
+nav > a {
+  color: green;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+
+nav > a:hover {
+  text-decoration: underline;
 }

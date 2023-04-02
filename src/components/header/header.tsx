@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import style from './header.module.css';
 
 const setActiveLink = ({ isActive }: { isActive: boolean }) => {
@@ -10,20 +10,27 @@ const setVisibilityHidden = ({ isActive }: { isActive: boolean }) => {
 };
 
 export default function Header() {
+  const location = useLocation();
   return (
     <header className={style.header}>
-      <NavLink to="/" className={setActiveLink}>
-        Home
-      </NavLink>
-      <NavLink to="/form" className={setActiveLink}>
-        Form
-      </NavLink>
-      <NavLink to="/about" className={setActiveLink}>
-        About
-      </NavLink>
-      <NavLink to="/sdfdsv" className={setVisibilityHidden}>
-        Surprise me!
-      </NavLink>
+      <span>{location.pathname}</span>
+
+      <div>
+        <nav>
+          <NavLink to="/" className={setActiveLink}>
+            Home
+          </NavLink>
+          <NavLink to="/form" className={setActiveLink}>
+            Form
+          </NavLink>
+          <NavLink to="/about" className={setActiveLink}>
+            About
+          </NavLink>
+          <NavLink to="/sdfdsv" className={setVisibilityHidden}>
+            Surprise me!
+          </NavLink>
+        </nav>
+      </div>
     </header>
   );
 }
