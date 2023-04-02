@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Message } from 'react-hook-form';
 import style from './myform.module.css';
 import { IUser2 } from '../../pages/FormPage';
 
@@ -28,8 +28,13 @@ export default function MyForm({ onSubmit }: IFormProps): ReactElement {
     formState: { errors },
   } = useForm<IFormField>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
+  // need it, becouse with standart validation - test does not works ?!?
+  const onImageValidate = (value: FileList): Message | boolean => {
+    if (!value || value.length < 1) return 'Show me your face';
+    return true;
+  };
+
   const onSubmitLocal: SubmitHandler<IFormField> = (data) => {
-    console.log('onSubmitLocal', data);
     const nd: IUser2 = {
       id: -1,
       username: data.username,
@@ -107,7 +112,7 @@ export default function MyForm({ onSubmit }: IFormProps): ReactElement {
       <label>
         <h4>Avatar:</h4>
         <input
-          {...register('avatar_form', { required: 'Show me your face' })}
+          {...register('avatar_form', { validate: onImageValidate })}
           type="file"
           accept="image/*"
           data-testid="avatar"

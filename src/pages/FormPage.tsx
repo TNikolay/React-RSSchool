@@ -21,7 +21,6 @@ export default function FormPage() {
   const [list, setList] = useState<IUser2List>([]);
 
   const addCard = (data: IUser2): void => {
-    console.log('add card ', data);
     data.id = list.length + 1;
     setList([...list, data]);
     toast.success(`Card with id = ${data.id} successfully added`);

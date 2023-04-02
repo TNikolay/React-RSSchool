@@ -13,7 +13,6 @@ describe('Card component', () => {
       avatar: 'itsclassified.png',
     };
     render(<CardUser user={test} />);
-    screen.debug();
 
     expect(screen.getAllByText(RegExp(`${test.username}`)).length).toBe(2);
     expect(screen.getAllByText(test.gender).length).toBe(1);
