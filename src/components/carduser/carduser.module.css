@@ -8,8 +8,15 @@
 
 .username {
   text-align: center;
+  font-size: 150%;
 }
 
 .list {
+  margin-top: 30px;
   line-height: 24px;
+}
+
+.from {
+  font-weight: normal;
+  font-size: smaller;
 }

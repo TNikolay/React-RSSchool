@@ -8,7 +8,11 @@ interface CardProps {
 export default function CardUser({ user }: CardProps) {
   return (
     <div className={style.container}>
-      <h3 className={style.username}>{user.username}</h3>
+      <h3 className={style.username}>
+        {user.username} <span className={style.from}>from</span> {user.location}
+      </h3>
+      <img src={user.avatar} alt="{user.username}" width="450" />
+
       <ul className={style.list}>
         <li>
           id : <strong>{user.id}</strong>
@@ -24,9 +28,6 @@ export default function CardUser({ user }: CardProps) {
         </li>
         <li>
           Gender : <strong>{user.gender}</strong>
-        </li>
-        <li>
-          Avatar : <strong>{user.avatar}</strong>
         </li>
       </ul>
     </div>

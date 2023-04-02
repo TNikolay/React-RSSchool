@@ -32,7 +32,7 @@ export default function MyForm({ onSubmit }: IFormProps): ReactElement {
       birthday: data.birthday,
       location: data.location,
       gender: data.gender,
-      avatar: data.avatar_form[0].name,
+      avatar: URL.createObjectURL(data.avatar_form[0]),
     };
     onSubmit(nd);
     reset();
