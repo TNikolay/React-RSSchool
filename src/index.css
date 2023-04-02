@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 h1 {
   text-align: center;
   margin-top: 0;
@@ -7,18 +9,11 @@ h1 {
   visibility: hidden;
 }
 
-header > a {
-  color: green;
-  font-size: 2rem;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 0 2rem;
+body {
+  font-size: 14px;
+  font-family: Roboto, Verdana, sans-serif;
 }
 
-header > a:hover {
-  text-decoration: underline;
-}
-
-header > .active-link {
+.active-link {
   color: #fff;
 }

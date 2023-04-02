@@ -3,6 +3,9 @@
 }
 
 .red {
+  height: 30px;
+  padding-top: 5px;
+  padding-left: 70px;
   color: red;
 }
 
@@ -11,5 +14,19 @@
 }
 
 .submit {
-  margin: 20px 0 0 200px;
+  margin: 20px 0 0 300px;
+}
+
+h4 {
+  display: inline-block;
+  text-align: right;
+  width: 100px;
+  padding-right: 10px;
+  margin: 0;
+}
+
+form {
+  border: 1px grey solid;
+  padding: 30px 0;
+  background-color: azure;
 }

@@ -1,13 +1,13 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import FormPage from './FormPage';
+import MyForm from './myform';
 
-describe('FormPage', () => {
+describe('MyForm', () => {
   it('should render and submit the form', async () => {
+    const onSubmit = jest.fn();
     global.URL.createObjectURL = jest.fn(() => 'mock-file-url');
 
-    render(<FormPage />);
-    expect(screen.getByText('Registration Form')).toBeInTheDocument();
+    render(<MyForm onSubmit={onSubmit} />);
 
     expect(screen.queryAllByRole('radio').length).toBe(2);
     expect(screen.queryAllByRole('option').length).toBe(9);
@@ -46,9 +46,13 @@ describe('FormPage', () => {
 
     expect(screen.queryByTestId('error-message')).toBeNull(); // no validation errors
 
-    expect(screen.getAllByText(RegExp(`${username}`)).length).toBe(2);
-    expect(screen.getAllByText(gender).length).toBe(2);
-    expect(screen.getAllByText('1990-01-01').length).toBe(1);
-    expect(screen.getByRole('img')).toHaveAttribute('src', 'mock-file-url');
+    expect(onSubmit).toHaveBeenCalledWith({
+      id: -1,
+      username,
+      birthday,
+      location,
+      gender,
+      avatar: 'mock-file-url',
+    });
   });
 });
